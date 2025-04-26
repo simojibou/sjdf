@@ -1,508 +1,1039 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Description" content="Dive into the world of NOTCOIN, a gaming web app integrated with Telegram and powered by the TON network. Start your journey of farming Notcoin Tokens today. Follow our easy, step-by-step guide to begin!">
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2299.77">
-  <style type="text/css">
-    body {background-color: #f7f6f2}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #4689cc; -webkit-text-stroke: #4689cc}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #8cd3fe; -webkit-text-stroke: #8cd3fe}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #c27e65; -webkit-text-stroke: #c27e65}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #cacaca; -webkit-text-stroke: #cacaca}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #cacaca; -webkit-text-stroke: #cacaca; min-height: 14.0px}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #a7c598; -webkit-text-stroke: #a7c598}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Menlo; color: #4f7b3d; -webkit-text-stroke: #4f7b3d}
-    span.s1 {font-kerning: none; background-color: #171717}
-    span.s2 {font-kerning: none; color: #8cd3fe; background-color: #171717; -webkit-text-stroke: 0px #8cd3fe}
-    span.s3 {font-kerning: none; color: #6d6d6d; background-color: #171717; -webkit-text-stroke: 0px #6d6d6d}
-    span.s4 {font-kerning: none; color: #cacaca; background-color: #171717; -webkit-text-stroke: 0px #cacaca}
-    span.s5 {font-kerning: none; color: #c27e65; background-color: #171717; -webkit-text-stroke: 0px #c27e65}
-    span.s6 {font-kerning: none; color: #4689cc; background-color: #171717; -webkit-text-stroke: 0px #4689cc}
-    span.s7 {font-kerning: none; color: #d4d4d4; background-color: #171717; -webkit-text-stroke: 0px #d4d4d4}
-    span.s8 {font-kerning: none; color: #a7c598; background-color: #171717; -webkit-text-stroke: 0px #a7c598}
-    span.s9 {font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SJ Hero - Superhero Team Battle Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Removed the empty <b:if cond='data:blog.isMobile'> block -->
+    
+    <style>
+        /* Basic responsive image/video handling */
+        img, video, iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Basic reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif; /* Fallback */
+        }
+
+        /* Custom Comic Styles */
+        :root {
+            --primary: #FF3D00;
+            --secondary: #00A8FF;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        .comic-font {
+            font-family: 'Bangers', cursive;
+            letter-spacing: 1px;
+        }
+
+        .comic-border {
+            border: 3px solid #000;
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+        }
+
+        .comic-button {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex; /* Ensure consistent flex behavior */
+            align-items: center; /* Vertically align content */
+            justify-content: center; /* Center content horizontally */
+        }
+
+        .comic-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+        }
+
+        /* Added active state for touch feedback */
+        .comic-button.active {
+             transform: translateY(1px) scale(0.98); /* Slightly pressed effect */
+             box-shadow: 3px 3px 0 rgba(0,0,0,0.2); /* Smaller shadow */
+             opacity: 0.9; /* Slight opacity change */
+        }
+
+
+        .comic-button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .comic-button:hover::after {
+            transform: translateX(0);
+        }
+
+        .hero-card {
+            transition: all 0.3s ease;
+            perspective: 1000px;
+        }
+
+        /* Removed hover transform for mobile, keep for md+ */
+        @media (min-width: 768px) { /* md breakpoint */
+            .hero-card:hover {
+                transform: translateY(-10px) scale(1.03);
+            }
+             .hero-card:hover .hero-card-inner {
+                transform: rotateY(180deg);
+            }
+        }
+
+
+        .hero-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .hero-card-front, .hero-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            /* Added overflow hidden to prevent content spilling during flip */
+            overflow: hidden;
+            border-radius: 0.5rem; /* Match Tailwind rounded-lg */
+        }
+
+         .hero-card-front {
+             /* Ensure front is on top initially */
+             z-index: 2;
+         }
+
+        .hero-card-back {
+            transform: rotateY(180deg);
+             /* Added flex for vertical centering of content */
+             display: flex;
+             flex-direction: column;
+             justify-content: center;
+             align-items: flex-start; /* Align text left */
+             padding: 1.5rem; /* Add padding to the back */
+             box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); } /* Reduced float distance for mobile */
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); } /* Reduced pulse scale for mobile */
+            100% { transform: scale(1); }
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+
+         /* Removed hover scale for mobile, keep for md+ */
+         @media (min-width: 768px) { /* md breakpoint */
+            .testimonial-card:hover {
+                transform: scale(1.05);
+            }
+         }
+
+
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+
+         /* Added active state for touch feedback */
+        .faq-item button.active {
+             opacity: 0.9;
+             background-color: rgba(255,255,255,0.1); /* Slight background change */
+        }
+
+        /* Removed hover transform for mobile, keep for md+ */
+        @media (min-width: 768px) { /* md breakpoint */
+            .faq-item:hover {
+                transform: translateX(5px);
+            }
+        }
+
+
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE</span><span class="s2"> html</span><span class="s1">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;</span><span class="s1">html</span><span class="s4"> </span><span class="s2">lang</span><span class="s3">=</span><span class="s5">"en"</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s1">charset</span><span class="s3">=</span><span class="s5">"UTF-8"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s2">name</span><span class="s3">=</span><span class="s1">"viewport"</span><span class="s4"> </span><span class="s2">content</span><span class="s3">=</span><span class="s1">"width=device-width, initial-scale=1.0"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">title</span><span class="s3">&gt;</span><span class="s1">SJ Music Label | Independent Artist Platform</span><span class="s3">&lt;/</span><span class="s6">title</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://cdn.tailwindcss.com"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"stylesheet"</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s6">@import</span><span class="s4"> </span><span class="s1">url</span><span class="s7">(</span><span class="s1">'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;amp;display=swap'</span><span class="s7">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">body</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s4"> </span><span class="s1">'Poppins'</span><span class="s7">,</span><span class="s4"> </span><span class="s1">sans-serif</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background-color:</span><span class="s1"> #0a0a0a</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">color:</span><span class="s1"> #f8f8f8</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">overflow-x:</span><span class="s1"> </span><span class="s5">hidden</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.gradient-text</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> </span><span class="s5">linear-gradient(</span><span class="s8">90deg</span><span class="s7">,</span><span class="s1"> #8a2be2</span><span class="s7">,</span><span class="s1"> #ff00ff</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">-webkit-background-clip:</span><span class="s4"> </span><span class="s5">text</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">background-clip:</span><span class="s4"> </span><span class="s5">text</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">color:</span><span class="s1"> </span><span class="s5">transparent</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.gradient-bg</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> </span><span class="s5">linear-gradient(</span><span class="s8">135deg</span><span class="s7">,</span><span class="s1"> #1a1a1a </span><span class="s8">0%</span><span class="s7">,</span><span class="s1"> #0a0a0a </span><span class="s8">100%</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.player-container</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s8">30</span><span class="s7">,</span><span class="s1"> </span><span class="s8">30</span><span class="s7">,</span><span class="s1"> </span><span class="s8">30</span><span class="s7">,</span><span class="s1"> </span><span class="s8">0.7</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">backdrop-filter:</span><span class="s4"> </span><span class="s5">blur(</span><span class="s8">10px</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">input</span><span class="s7">,</span><span class="s4"> </span><span class="s1">textarea</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s8">30</span><span class="s7">,</span><span class="s1"> </span><span class="s8">30</span><span class="s7">,</span><span class="s1"> </span><span class="s8">30</span><span class="s7">,</span><span class="s1"> </span><span class="s8">0.7</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border:</span><span class="s1"> </span><span class="s8">1px</span><span class="s1"> </span><span class="s5">solid</span><span class="s1"> #333</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">transition:</span><span class="s1"> </span><span class="s5">all</span><span class="s1"> </span><span class="s8">0.3s</span><span class="s1"> </span><span class="s5">ease</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">input:focus</span><span class="s7">,</span><span class="s4"> </span><span class="s1">textarea:focus</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border-color:</span><span class="s1"> #8a2be2</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">outline:</span><span class="s1"> </span><span class="s5">none</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.submit-btn</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> </span><span class="s5">linear-gradient(</span><span class="s8">90deg</span><span class="s7">,</span><span class="s1"> #8a2be2</span><span class="s7">,</span><span class="s1"> #ff00ff</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">transition:</span><span class="s1"> </span><span class="s5">all</span><span class="s1"> </span><span class="s8">0.3s</span><span class="s1"> </span><span class="s5">ease</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.submit-btn:hover</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">transform:</span><span class="s1"> </span><span class="s5">translateY(</span><span class="s8">-2px</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p6"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s2">box-shadow:</span><span class="s4"> </span><span class="s1">0</span><span class="s4"> </span><span class="s1">10px</span><span class="s4"> </span><span class="s1">20px</span><span class="s4"> </span><span class="s5">rgba(</span><span class="s1">138</span><span class="s7">,</span><span class="s4"> </span><span class="s1">43</span><span class="s7">,</span><span class="s4"> </span><span class="s1">226</span><span class="s7">,</span><span class="s4"> </span><span class="s1">0.3</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.artist-card</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">transition:</span><span class="s1"> </span><span class="s5">all</span><span class="s1"> </span><span class="s8">0.3s</span><span class="s1"> </span><span class="s5">ease</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.artist-card:hover</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">transform:</span><span class="s1"> </span><span class="s5">translateY(</span><span class="s8">-5px</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s8">0</span><span class="s1"> </span><span class="s8">15px</span><span class="s1"> </span><span class="s8">30px</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s8">0</span><span class="s7">,</span><span class="s1"> </span><span class="s8">0</span><span class="s7">,</span><span class="s1"> </span><span class="s8">0</span><span class="s7">,</span><span class="s1"> </span><span class="s8">0.3</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">/* Mobile-specific styles */</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>@</span><span class="s6">media</span><span class="s1"> (</span><span class="s6">max-width:</span><span class="s1"> 767</span><span class="s6">px</span><span class="s1">) </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>.hero-video {</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s2">object-position:</span><span class="s1"> </span><span class="s8">60%</span><span class="s1"> </span><span class="s5">center</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">.mobile-player</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s2">flex-direction:</span><span class="s1"> </span><span class="s5">column</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s2">text-align:</span><span class="s1"> </span><span class="s5">center</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">.mobile-player-controls</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s2">flex-direction:</span><span class="s1"> </span><span class="s5">column</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s2">gap:</span><span class="s1"> </span><span class="s8">1rem</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">.mobile-form-inputs</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">grid-template-columns:</span><span class="s4"> </span><span class="s8">1fr</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">.mobile-footer-columns</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">grid-template-columns:</span><span class="s4"> </span><span class="s8">1fr</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s2">gap:</span><span class="s1"> </span><span class="s8">2rem</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">.mobile-menu-item</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s2">padding:</span><span class="s1"> </span><span class="s8">0.75rem</span><span class="s1"> </span><span class="s8">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s2">border-bottom:</span><span class="s1"> </span><span class="s8">1px</span><span class="s1"> </span><span class="s5">solid</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s8">255</span><span class="s7">,</span><span class="s8">255</span><span class="s7">,</span><span class="s8">255</span><span class="s7">,</span><span class="s8">0.1</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s3">&lt;</span><span class="s6">body</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"min-h-screen"</span><span class="s3">&gt;</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- Navigation --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">nav</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"gradient-bg py-4 px-6 sticky top-0 z-50"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"max-w-6xl mx-auto flex justify-between items-center"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex items-center space-x-2"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"fas fa-headphones text-2xl gradient-text"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">span</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-xl font-bold"</span><span class="s3">&gt;</span><span class="s1">SJ Music Label</span><span class="s3">&lt;/</span><span class="s6">span</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hidden md:flex space-x-6"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#artists"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hover:text-purple-400 transition"</span><span class="s3">&gt;</span><span class="s4">Artists</span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#music"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hover:text-purple-400 transition"</span><span class="s3">&gt;</span><span class="s4">Music</span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#contact"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hover:text-purple-400 transition"</span><span class="s3">&gt;</span><span class="s4">Contact</span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">button</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"md:hidden text-2xl"</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"menu-toggle"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fas fa-bars"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">button</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;!-- Mobile Menu --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"md:hidden hidden py-4"</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"mobile-menu"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex flex-col space-y-3"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#artists"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"mobile-menu-item hover:text-purple-400 transition"</span><span class="s3">&gt;</span><span class="s4">Artists</span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#music"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"mobile-menu-item hover:text-purple-400 transition"</span><span class="s3">&gt;</span><span class="s4">Music</span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#contact"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"mobile-menu-item hover:text-purple-400 transition"</span><span class="s3">&gt;</span><span class="s4">Contact</span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s6">nav</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s9"></span><br></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- Hero Section --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">section</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"relative h-screen flex items-center justify-center overflow-hidden"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"absolute inset-0 bg-black opacity-60"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">video</span><span class="s4"> </span><span class="s2">autoplay</span><span class="s4"> </span><span class="s2">muted</span><span class="s4"> </span><span class="s2">loop</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"absolute w-full h-full object-cover hero-video"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">source</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://assets.mixkit.co/videos/preview/mixkit-musician-playing-acoustic-guitar-in-a-dark-room-32300-large.mp4"</span><span class="s4"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"video/mp4"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">video</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"relative z-10 text-center px-6 max-w-4xl mx-auto"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">h1</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-4xl md:text-6xl font-bold mb-6"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">span</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"gradient-text"</span><span class="s3">&gt;</span><span class="s1">Amplifying</span><span class="s3">&lt;/</span><span class="s6">span</span><span class="s3">&gt;</span><span class="s1"> Independent Voices</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">h1</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-lg md:text-xl mb-8 text-gray-300"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>SJ Music Label is dedicated to discovering and promoting the next generation of musical talent.<span class="Apple-converted-space"> </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>We provide artists with the platform, resources, and support they need to reach global audiences.</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex flex-col sm:flex-row justify-center gap-4"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#music"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>Explore Music</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#contact"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-transparent border-2 border-white hover:bg-white hover:text-black text-white px-8 py-3 rounded-full font-medium transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>Join Us</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">section</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s9"></span><br></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- Featured Artists --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">section</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"artists"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"py-16 px-6 gradient-bg"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"max-w-6xl mx-auto"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">h2</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-3xl md:text-4xl font-bold mb-12 text-center"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>Our </span><span class="s3">&lt;</span><span class="s6">span</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"gradient-text"</span><span class="s3">&gt;</span><span class="s1">Featured Artists</span><span class="s3">&lt;/</span><span class="s6">span</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">h2</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"</span><span class="s3">&gt;</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">&lt;!-- Artist 1 --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"artist-card bg-gray-900 rounded-xl overflow-hidden"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"relative h-64"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">img</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://images.unsplash.com/photo-1511671782779-c97d3d27d1c8?ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=687&amp;amp;q=80"</span><span class="s4"><span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                             </span></span><span class="s2">alt</span><span class="s3">=</span><span class="s1">"Artist"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full h-full object-cover"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"absolute bottom-4 left-4"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">h3</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-2xl font-bold"</span><span class="s3">&gt;</span><span class="s1">Lena Ray</span><span class="s3">&lt;/</span><span class="s6">h3</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-purple-400"</span><span class="s3">&gt;</span><span class="s1">Electronic / Pop</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"p-6"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-gray-400 mb-4"</span><span class="s3">&gt;</span><span class="s1">Blending ethereal vocals with pulsating beats, Lena creates immersive soundscapes that transport listeners.</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"flex space-x-4"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-spotify text-2xl"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-youtube text-2xl"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-instagram text-2xl"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">&lt;!-- Artist 2 --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"artist-card bg-gray-900 rounded-xl overflow-hidden"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"relative h-64"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">img</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1470&amp;amp;q=80"</span><span class="s4"><span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                             </span></span><span class="s2">alt</span><span class="s3">=</span><span class="s1">"Artist"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full h-full object-cover"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"absolute bottom-4 left-4"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">h3</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-2xl font-bold"</span><span class="s3">&gt;</span><span class="s1">The Midnight</span><span class="s3">&lt;/</span><span class="s6">h3</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-purple-400"</span><span class="s3">&gt;</span><span class="s1">Synthwave / Retro</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"p-6"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-gray-400 mb-4"</span><span class="s3">&gt;</span><span class="s1">Nostalgic synth-driven soundscapes that evoke memories of neon-lit streets and endless summer nights.</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"flex space-x-4"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-spotify text-2xl"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-youtube text-2xl"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-instagram text-2xl"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">&lt;!-- Artist 3 --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"artist-card bg-gray-900 rounded-xl overflow-hidden"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"relative h-64"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">img</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1470&amp;amp;q=80"</span><span class="s4"><span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                             </span></span><span class="s2">alt</span><span class="s3">=</span><span class="s1">"Artist"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full h-full object-cover"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"absolute bottom-4 left-4"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">h3</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-2xl font-bold"</span><span class="s3">&gt;</span><span class="s1">DJ Nova</span><span class="s3">&lt;/</span><span class="s6">h3</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-purple-400"</span><span class="s3">&gt;</span><span class="s1">House / Techno</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"p-6"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-gray-400 mb-4"</span><span class="s3">&gt;</span><span class="s1">High-energy beats that command the dancefloor with infectious rhythms and pulsating basslines.</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"flex space-x-4"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-spotify text-2xl"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-youtube text-2xl"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                                </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-instagram text-2xl"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">section</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s9"></span><br></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- Featured Track --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">section</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"music"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"py-16 px-6 bg-black"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"max-w-6xl mx-auto"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">h2</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-3xl md:text-4xl font-bold mb-12 text-center"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>Featured </span><span class="s3">&lt;</span><span class="s6">span</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"gradient-text"</span><span class="s3">&gt;</span><span class="s1">Track</span><span class="s3">&lt;/</span><span class="s6">span</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">h2</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex flex-col lg:flex-row gap-12 items-center mobile-player"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"lg:w-1/2"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">img</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&amp;amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1470&amp;amp;q=80"</span><span class="s4"><span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                         </span></span><span class="s2">alt</span><span class="s3">=</span><span class="s1">"Album Cover"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full rounded-xl shadow-2xl"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"lg:w-1/2 player-container p-8 rounded-xl"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">h3</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-2xl font-bold mb-2"</span><span class="s3">&gt;</span><span class="s1">"Neon Dreams"</span><span class="s3">&lt;/</span><span class="s6">h3</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-purple-400 mb-6"</span><span class="s3">&gt;</span><span class="s1">Lena Ray</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-gray-400 mb-8"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>The lead single from Lena's upcoming EP blends haunting vocals with pulsating synths, creating an atmospheric journey through love and longing under city lights.</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex items-center space-x-4 mb-8 mobile-player-controls"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fas fa-play text-xl"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex-1 bg-gray-800 rounded-full h-2"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-purple-600 h-2 rounded-full w-1/3"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">span</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-gray-400 text-sm"</span><span class="s3">&gt;</span><span class="s1">2:45 / 4:30</span><span class="s3">&lt;/</span><span class="s6">span</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex flex-wrap gap-4 justify-center"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-medium transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-spotify mr-2"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span><span class="s1"> Spotify</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-medium transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-apple mr-2"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span><span class="s1"> Apple Music</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-medium transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-youtube mr-2"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span><span class="s1"> YouTube</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-medium transition"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fas fa-share-alt mr-2"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span><span class="s1"> Share</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">section</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s9"></span><br></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- Contact Form --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">section</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"contact"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"py-16 px-6 gradient-bg"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"max-w-4xl mx-auto"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">h2</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-3xl md:text-4xl font-bold mb-12 text-center"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>Join Our </span><span class="s3">&lt;</span><span class="s6">span</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"gradient-text"</span><span class="s3">&gt;</span><span class="s1">Community</span><span class="s3">&lt;/</span><span class="s6">span</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">h2</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-gray-900 rounded-xl p-8 md:p-12"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 mb-8 text-center"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>Are you an independent artist looking for support? Submit your music and join our growing family of creators.</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">form</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"space-y-6"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"grid grid-cols-1 md:grid-cols-2 gap-6 mobile-form-inputs"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">label</span><span class="s1"> </span><span class="s2">for</span><span class="s3">=</span><span class="s5">"name"</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"block text-gray-400 mb-2"</span><span class="s3">&gt;</span><span class="s1">Your Name</span><span class="s3">&lt;/</span><span class="s6">label</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">input</span><span class="s4"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"text"</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"name"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full px-4 py-3 rounded-lg text-white"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">label</span><span class="s1"> </span><span class="s2">for</span><span class="s3">=</span><span class="s5">"email"</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"block text-gray-400 mb-2"</span><span class="s3">&gt;</span><span class="s1">Email Address</span><span class="s3">&lt;/</span><span class="s6">label</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">input</span><span class="s4"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"email"</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"email"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full px-4 py-3 rounded-lg text-white"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">label</span><span class="s1"> </span><span class="s2">for</span><span class="s3">=</span><span class="s5">"artist"</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"block text-gray-400 mb-2"</span><span class="s3">&gt;</span><span class="s1">Artist/Band Name</span><span class="s3">&lt;/</span><span class="s6">label</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">input</span><span class="s4"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"text"</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"artist"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full px-4 py-3 rounded-lg text-white"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">label</span><span class="s1"> </span><span class="s2">for</span><span class="s3">=</span><span class="s5">"links"</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"block text-gray-400 mb-2"</span><span class="s3">&gt;</span><span class="s1">Links to Your Music (Spotify, SoundCloud, etc.)</span><span class="s3">&lt;/</span><span class="s6">label</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">textarea</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"links"</span><span class="s4"> </span><span class="s2">rows</span><span class="s3">=</span><span class="s1">"3"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full px-4 py-3 rounded-lg text-white"</span><span class="s3">&gt;&lt;/</span><span class="s6">textarea</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">label</span><span class="s1"> </span><span class="s2">for</span><span class="s3">=</span><span class="s5">"message"</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"block text-gray-400 mb-2"</span><span class="s3">&gt;</span><span class="s1">Tell Us About Your Music</span><span class="s3">&lt;/</span><span class="s6">label</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">textarea</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"message"</span><span class="s4"> </span><span class="s2">rows</span><span class="s3">=</span><span class="s1">"5"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"w-full px-4 py-3 rounded-lg text-white"</span><span class="s3">&gt;&lt;/</span><span class="s6">textarea</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">button</span><span class="s4"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"submit"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"submit-btn w-full py-3 rounded-full text-white font-bold"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>Submit Your Music</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">button</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">form</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">section</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s9"></span><br></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- Footer --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">footer</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-black py-12 px-6"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"max-w-6xl mx-auto"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"grid grid-cols-1 md:grid-cols-4 gap-8 mobile-footer-columns"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"flex items-center space-x-2 mb-4"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"fas fa-headphones text-2xl gradient-text"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">span</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-xl font-bold"</span><span class="s3">&gt;</span><span class="s1">SJ Music Label</span><span class="s3">&lt;/</span><span class="s6">span</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-gray-400"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>Amplifying independent voices since 2018. We're dedicated to supporting artists at every stage of their journey.</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">h4</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-lg font-bold mb-4"</span><span class="s3">&gt;</span><span class="s1">Quick Links</span><span class="s3">&lt;/</span><span class="s6">h4</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">ul</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"space-y-2"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">li</span><span class="s3">&gt;&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span><span class="s4">Home</span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;&lt;/</span><span class="s6">li</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">li</span><span class="s3">&gt;&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#artists"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span><span class="s4">Artists</span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;&lt;/</span><span class="s6">li</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">li</span><span class="s3">&gt;&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#music"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span><span class="s4">Music</span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;&lt;/</span><span class="s6">li</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">li</span><span class="s3">&gt;&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#contact"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition"</span><span class="s3">&gt;</span><span class="s4">Contact</span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;&lt;/</span><span class="s6">li</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">ul</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">h4</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-lg font-bold mb-4"</span><span class="s3">&gt;</span><span class="s1">Connect</span><span class="s3">&lt;/</span><span class="s6">h4</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"flex space-x-4"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition text-2xl"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-spotify"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition text-2xl"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-youtube"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition text-2xl"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-instagram"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">a</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"#"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"text-gray-400 hover:text-purple-400 transition text-2xl"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fab fa-twitter"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">a</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">h4</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-lg font-bold mb-4"</span><span class="s3">&gt;</span><span class="s1">Newsletter</span><span class="s3">&lt;/</span><span class="s6">h4</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"text-gray-400 mb-4"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>Subscribe for updates on new releases, events, and artist spotlights.</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"flex"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">input</span><span class="s4"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"email"</span><span class="s4"> </span><span class="s2">placeholder</span><span class="s3">=</span><span class="s1">"Your email"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"px-4 py-3 rounded-l-lg text-white w-full"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;</span><span class="s6">button</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"bg-purple-600 hover:bg-purple-700 px-4 rounded-r-lg"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s3">&lt;</span><span class="s6">i</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"fas fa-paper-plane"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span></span><span class="s3">&lt;/</span><span class="s6">button</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"border-t border-gray-800 mt-12 pt-8 text-center text-gray-500"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s3">&gt;</span><span class="s1">&amp;copy; 2023 SJ Music Label. All rights reserved.</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">footer</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s9"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">// Mobile menu toggle</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s5">'menu-toggle'</span><span class="s7">).</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s5">'click'</span><span class="s7">,</span><span class="s1"> </span><span class="s6">function</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s1"> menu </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s5">'mobile-menu'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>menu</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">toggle</span><span class="s7">(</span><span class="s5">'hidden'</span><span class="s7">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">// Toggle menu icon between bars and X</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s6">const</span><span class="s1"> icon </span><span class="s7">=</span><span class="s1"> </span><span class="s6">this</span><span class="s7">.</span><span class="s1">querySelector</span><span class="s7">(</span><span class="s5">'i'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s6">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">menu</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">contains</span><span class="s7">(</span><span class="s5">'hidden'</span><span class="s7">))</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>icon</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s5">'fa-times'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>icon</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s5">'fa-bars'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span><span class="s1"> </span><span class="s6">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>icon</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s5">'fa-bars'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>icon</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s5">'fa-times'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">});</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">// Close mobile menu when clicking on a menu item</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">querySelectorAll</span><span class="s7">(</span><span class="s5">'#mobile-menu a'</span><span class="s7">).</span><span class="s1">forEach</span><span class="s7">(</span><span class="s1">item </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>item</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s5">'click'</span><span class="s7">,</span><span class="s1"> </span><span class="s7">()</span><span class="s1"> </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s5">'mobile-menu'</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s5">'hidden'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s5">'menu-toggle'</span><span class="s7">).</span><span class="s1">querySelector</span><span class="s7">(</span><span class="s5">'i'</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s5">'fa-times'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s5">'menu-toggle'</span><span class="s7">).</span><span class="s1">querySelector</span><span class="s7">(</span><span class="s5">'i'</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s5">'fa-bars'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">});</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">// Smooth scrolling for anchor links</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">querySelectorAll</span><span class="s7">(</span><span class="s5">'a[href^="#"]'</span><span class="s7">).</span><span class="s1">forEach</span><span class="s7">(</span><span class="s1">anchor </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>anchor</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s5">'click'</span><span class="s7">,</span><span class="s1"> </span><span class="s6">function</span><span class="s1"> </span><span class="s7">(</span><span class="s1">e</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>e</span><span class="s7">.</span><span class="s1">preventDefault</span><span class="s7">();</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s6">const</span><span class="s1"> targetId </span><span class="s7">=</span><span class="s1"> </span><span class="s6">this</span><span class="s7">.</span><span class="s1">getAttribute</span><span class="s7">(</span><span class="s5">'href'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s6">const</span><span class="s1"> targetElement </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">querySelector</span><span class="s7">(</span><span class="s1">targetId</span><span class="s7">);</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s6">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">targetElement</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span>window</span><span class="s7">.</span><span class="s1">scrollTo</span><span class="s7">({</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>top</span><span class="s7">:</span><span class="s1"> targetElement</span><span class="s7">.</span><span class="s1">offsetTop </span><span class="s7">-</span><span class="s1"> </span><span class="s8">80</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>behavior</span><span class="s7">:</span><span class="s1"> </span><span class="s5">'smooth'</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">});</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span></span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                    </span></span><span class="s1">// Close mobile menu if open</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s6">const</span><span class="s1"> mobileMenu </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s5">'mobile-menu'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s6">if</span><span class="s1"> </span><span class="s7">(!</span><span class="s1">mobileMenu</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">contains</span><span class="s7">(</span><span class="s5">'hidden'</span><span class="s7">))</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>mobileMenu</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s5">'hidden'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s5">'menu-toggle'</span><span class="s7">).</span><span class="s1">querySelector</span><span class="s7">(</span><span class="s5">'i'</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s5">'fa-times'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s5">'menu-toggle'</span><span class="s7">).</span><span class="s1">querySelector</span><span class="s7">(</span><span class="s5">'i'</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s5">'fa-bars'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">});</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">// Mobile form validation</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">const</span><span class="s1"> form </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">querySelector</span><span class="s7">(</span><span class="s5">'form'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">form</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>form</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s5">'submit'</span><span class="s7">,</span><span class="s1"> </span><span class="s6">function</span><span class="s7">(</span><span class="s1">e</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>e</span><span class="s7">.</span><span class="s1">preventDefault</span><span class="s7">();</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s6">const</span><span class="s1"> email </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s5">'email'</span><span class="s7">).</span><span class="s1">value</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s6">const</span><span class="s1"> links </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s5">'links'</span><span class="s7">).</span><span class="s1">value</span><span class="s7">;</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s6">if</span><span class="s1"> </span><span class="s7">(!</span><span class="s1">email </span><span class="s7">||</span><span class="s1"> </span><span class="s7">!</span><span class="s1">links</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span>alert</span><span class="s7">(</span><span class="s1">'Please fill in all required fields'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s6">return</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">// Simple email validation</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s6">if</span><span class="s1"> </span><span class="s7">(!</span><span class="s1">email</span><span class="s7">.</span><span class="s1">includes</span><span class="s7">(</span><span class="s5">'@'</span><span class="s7">)</span><span class="s1"> </span><span class="s7">||</span><span class="s1"> </span><span class="s7">!</span><span class="s1">email</span><span class="s7">.</span><span class="s1">includes</span><span class="s7">(</span><span class="s5">'.'</span><span class="s7">))</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                    </span>alert</span><span class="s7">(</span><span class="s1">'Please enter a valid email address'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s6">return</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span></span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s1">// If everything is valid, show success message</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">                </span>alert</span><span class="s7">(</span><span class="s1">'Thank you for your submission! We will review your music and get back to you soon.'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span>form</span><span class="s7">.</span><span class="s1">reset</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">// Mobile player functionality</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">const</span><span class="s1"> playButton </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">querySelector</span><span class="s7">(</span><span class="s5">'.fa-play'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">playButton</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>playButton</span><span class="s7">.</span><span class="s1">addEventListener</span><span class="s7">(</span><span class="s5">'click'</span><span class="s7">,</span><span class="s1"> </span><span class="s6">function</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s6">if</span><span class="s1"> </span><span class="s7">(</span><span class="s6">this</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">contains</span><span class="s7">(</span><span class="s5">'fa-play'</span><span class="s7">))</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s6">this</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s5">'fa-play'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s6">this</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s5">'fa-pause'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span><span class="s1"> </span><span class="s6">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s6">this</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s5">'fa-pause'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s6">this</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s5">'fa-play'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">body</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">html</span><span class="s3">&gt;</span></p>
+    <!-- Navigation -->
+    <nav class="bg-black bg-opacity-90 fixed w-full z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img class="h-10 w-10" src="https://play-lh.googleusercontent.com/6yYwP6P_hyZNpaHAor1CzxjY4ZG_QfwCXxB_WAasVVoQ8-MbQDEUr35f7qN0kdvtj5Q" alt="SJ Hero Logo">
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#heroes" class="text-white hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium comic-font">HEROES</a>
+                            <a href="#features" class="text-white hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium comic-font">FEATURES</a>
+                            <a href="#gameplay" class="text-white hover:text-yellow-400 px-3 py-2 rounded-md text-sm font-medium comic-font">GAMEPLAY</a>
+                            <a href="#testimonials" class="text-white hover:text-purple-400 px-3 py-2 rounded-md text-sm font-medium comic-font">REVIEWS</a>
+                            <a href="#faq" class="text-white hover:text-green-400 px-3 py-2 rounded-md text-sm font-medium comic-font">FAQ</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <a href="https://play.google.com/store/apps/details?id=com.gamehero.sj" class="comic-button bg-red-600 text-white px-4 py-2 rounded-md text-sm font-bold comic-font comic-border hover:bg-red-700">
+                        DOWNLOAD NOW
+                    </a>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#heroes" class="text-white block px-3 py-2 rounded-md text-base font-medium comic-font hover:bg-gray-700">HEROES</a>
+                <a href="#features" class="text-white block px-3 py-2 rounded-md text-base font-medium comic-font hover:bg-gray-700">FEATURES</a>
+                <a href="#gameplay" class="text-white block px-3 py-2 rounded-md text-base font-medium comic-font hover:bg-gray-700">GAMEPLAY</a>
+                <a href="#testimonials" class="text-white block px-3 py-2 rounded-md text-base font-medium comic-font hover:bg-gray-700">REVIEWS</a>
+                <a href="#faq" class="text-white block px-3 py-2 rounded-md text-base font-medium comic-font hover:bg-gray-700">FAQ</a>
+                <a href="https://play.google.com/store/apps/details?id=com.gamehero.sj" class="block bg-red-600 text-white px-3 py-2 rounded-md text-base font-bold comic-font comic-border hover:bg-red-700 text-center">DOWNLOAD NOW</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-gray-900 to-gray-800 pt-24 pb-10 sm:pb-20 py-10 sm:py-16">
+        <div class="absolute inset-0 opacity-20">
+            <img src="https://via.placeholder.com/1920x1080?text=City+Background" alt="City Background" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 text-center md:text-left">
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4 md:mb-6 comic-font text-red-500 leading-tight">
+                        SJ HERO
+                    </h1>
+                    <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6 comic-font">
+                        Assemble Your Team. Save Snor City.
+                    </h2>
+                    <p class="text-sm sm:text-lg text-gray-300 mb-6 sm:mb-8 max-w-lg mx-auto md:mx-0">
+                        Join the ultimate superhero battle experience! Collect unique heroes, master their abilities, and strategize your way to victory against the evil forces threatening Snor City.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start items-center sm:items-start">
+                        <a href="https://play.google.com/store/apps/details?id=com.gamehero.sj" class="comic-button bg-red-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-md text-base sm:text-lg font-bold comic-font comic-border hover:bg-red-700 pulse w-full max-w-xs sm:max-w-none sm:w-auto">
+                            <i class="fab fa-google-play mr-2"></i> DOWNLOAD NOW
+                        </a>
+                        <a href="#gameplay" class="comic-button bg-blue-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-md text-base sm:text-lg font-bold comic-font comic-border hover:bg-blue-700 w-full max-w-xs sm:max-w-none sm:w-auto mt-2 sm:mt-0">
+                            <i class="fas fa-play-circle mr-2"></i> WATCH TRAILER
+                        </a>
+                    </div>
+                    <div class="mt-6 sm:mt-8 flex items-center justify-center md:justify-start">
+                        <div class="flex -space-x-2">
+                            <img class="inline-block h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-white" src="https://play-lh.googleusercontent.com/6yYwP6P_hyZNpaHAor1CzxjY4ZG_QfwCXxB_WAasVVoQ8-MbQDEUr35f7qN0kdvtj5Q" alt="Player 1">
+                            <img class="inline-block h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-white" src="https://play-lh.googleusercontent.com/6yYwP6P_hyZNpaHAor1CzxjY4ZG_QfwCXxB_WAasVVoQ8-MbQDEUr35f7hN0kdvtj5Q" alt="Player 2">
+                            <img class="inline-block h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-white" src="https://play-lh.googleusercontent.com/6yYwP6P_hyZNpaHAor1CzxjY4ZG_QfwCXxB_WAasVVoQ8-MbQDEUr35f7qN0kdvtj5Q" alt="Player 3">
+                        </div>
+                        <div class="ml-3 sm:ml-4 text-left">
+                            <p class="text-xs sm:text-sm text-gray-300">Join <span class="font-bold text-white">1M+</span> players worldwide</p>
+                            <div class="flex items-center">
+                                <div class="flex items-center text-yellow-400 text-xs sm:text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="ml-1 text-white text-xs sm:text-sm">4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center mt-8 md:mt-0">
+                    <img src="https://play-lh.googleusercontent.com/nAcmbkrNe8oH0V2qquqjpJDRZ4XCashEmX1-ecFDt-CHFR7bIvv43jyeezsYce8B44s" alt="SJ Hero Game Screenshot" class="w-full max-w-xs sm:max-w-sm md:max-w-md floating comic-border">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Heroes Spotlight -->
+    <section id="heroes" class="py-10 sm:py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-4 comic-font text-red-500">
+                    MEET THE HEROES
+                </h2>
+                <p class="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto">
+                    Collect and upgrade an ever-growing roster of unique superheroes, each with special abilities and play styles.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <!-- Hero 1 -->
+                <div class="hero-card mb-6 md:mb-0">
+                    <div class="hero-card-inner">
+                        <div class="hero-card-front bg-gray-800 rounded-lg overflow-hidden comic-border">
+                            <img src="https://via.placeholder.com/300x400?text=Blaze" alt="Blaze" class="w-full h-56 sm:h-64 object-cover">
+                            <div class="p-4 sm:p-6">
+                                <h3 class="text-xl sm:text-2xl font-bold text-white comic-font">BLAZE</h3>
+                                <p class="text-red-400 mb-3 sm:mb-4">Fire Elemental</p>
+                                <div class="flex mb-2 text-xs">
+                                    <span class="bg-red-600 text-white px-2 py-1 rounded mr-2">POWER</span>
+                                    <span class="bg-red-600 text-white px-2 py-1 rounded">AOE</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5 mb-3 sm:mb-4">
+                                    <div class="bg-red-600 h-2.5 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-card-back bg-gray-800 rounded-lg p-4 sm:p-6 comic-border">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white comic-font mb-3 sm:mb-4">BLAZE</h3>
+                            <p class="text-gray-300 text-sm sm:text-base mb-3 sm:mb-4">
+                                Master of fire manipulation. Can incinerate multiple enemies at once with explosive fireballs.
+                            </p>
+                             <div class="flex flex-wrap space-x-2 text-xs">
+                                <span class="bg-red-600 text-white px-2 py-1 rounded mb-1">Fire Storm</span>
+                                <span class="bg-red-600 text-white px-2 py-1 rounded mb-1">Meteor Shower</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero 2 -->
+                 <div class="hero-card mb-6 md:mb-0">
+                    <div class="hero-card-inner">
+                        <div class="hero-card-front bg-gray-800 rounded-lg overflow-hidden comic-border">
+                            <img src="https://via.placeholder.com/300x400?text=Titan" alt="Titan" class="w-full h-56 sm:h-64 object-cover">
+                            <div class="p-4 sm:p-6">
+                                <h3 class="text-xl sm:text-2xl font-bold text-white comic-font">TITAN</h3>
+                                <p class="text-blue-400 mb-3 sm:mb-4">Super Soldier</p>
+                                <div class="flex mb-2 text-xs">
+                                    <span class="bg-blue-600 text-white px-2 py-1 rounded mr-2">DEFENSE</span>
+                                    <span class="bg-blue-600 text-white px-2 py-1 rounded">TANK</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5 mb-3 sm:mb-4">
+                                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-card-back bg-gray-800 rounded-lg p-4 sm:p-6 comic-border">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white comic-font mb-3 sm:mb-4">TITAN</h3>
+                            <p class="text-gray-300 text-sm sm:text-base mb-3 sm:mb-4">
+                                Nearly indestructible super soldier. Can absorb massive damage while protecting teammates.
+                            </p>
+                             <div class="flex flex-wrap space-x-2 text-xs">
+                                <span class="bg-blue-600 text-white px-2 py-1 rounded mb-1">Shield Wall</span>
+                                <span class="bg-blue-600 text-white px-2 py-1 rounded mb-1">Atomic Punch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero 3 -->
+                <div class="hero-card mb-6 md:mb-0">
+                    <div class="hero-card-inner">
+                        <div class="hero-card-front bg-gray-800 rounded-lg overflow-hidden comic-border">
+                            <img src="https://via.placeholder.com/300x400?text=Specter" alt="Specter" class="w-full h-56 sm:h-64 object-cover">
+                            <div class="p-4 sm:p-6">
+                                <h3 class="text-xl sm:text-2xl font-bold text-white comic-font">SPECTER</h3>
+                                <p class="text-purple-400 mb-3 sm:mb-4">Phantom Assassin</p>
+                                <div class="flex mb-2 text-xs">
+                                    <span class="bg-purple-600 text-white px-2 py-1 rounded mr-2">STEALTH</span>
+                                    <span class="bg-purple-600 text-white px-2 py-1 rounded">CRITICAL</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5 mb-3 sm:mb-4">
+                                    <div class="bg-purple-600 h-2.5 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-card-back bg-gray-800 rounded-lg p-4 sm:p-6 comic-border">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white comic-font mb-3 sm:mb-4">SPECTER</h3>
+                            <p class="text-gray-300 text-sm sm:text-base mb-3 sm:mb-4">
+                                Ghostly assassin who strikes from the shadows. Can bypass enemy defenses with deadly precision.
+                            </p>
+                             <div class="flex flex-wrap space-x-2 text-xs">
+                                <span class="bg-purple-600 text-white px-2 py-1 rounded mb-1">Shadow Step</span>
+                                <span class="bg-purple-600 text-white px-2 py-1 rounded mb-1">Phantom Strike</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero 4 -->
+                 <div class="hero-card mb-6 md:mb-0">
+                    <div class="hero-card-inner">
+                        <div class="hero-card-front bg-gray-800 rounded-lg overflow-hidden comic-border">
+                            <img src="https://via.placeholder.com/300x400?text=Nova" alt="Nova" class="w-full h-56 sm:h-64 object-cover">
+                            <div class="p-4 sm:p-6">
+                                <h3 class="text-xl sm:text-2xl font-bold text-white comic-font">NOVA</h3>
+                                <p class="text-yellow-400 mb-3 sm:mb-4">Cosmic Energy</p>
+                                <div class="flex mb-2 text-xs">
+                                    <span class="bg-yellow-600 text-white px-2 py-1 rounded mr-2">SUPPORT</span>
+                                    <span class="bg-yellow-600 text-white px-2 py-1 rounded">HEALER</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5 mb-3 sm:mb-4">
+                                    <div class="bg-yellow-600 h-2.5 rounded-full" style="width: 65%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-card-back bg-gray-800 rounded-lg p-4 sm:p-6 comic-border">
+                            <h3 class="text-xl sm:text-2xl font-bold text-white comic-font mb-3 sm:mb-4">NOVA</h3>
+                            <p class="text-gray-300 text-sm sm:text-base mb-3 sm:mb-4">
+                                Harnesser of cosmic energy. Can heal allies and boost their abilities while weakening enemies.
+                            </p>
+                            <div class="flex flex-wrap space-x-2 text-xs">
+                                <span class="bg-yellow-600 text-white px-2 py-1 rounded mb-1">Stellar Heal</span>
+                                <span class="bg-yellow-600 text-white text-xs px-2 py-1 rounded mb-1">Gravity Well</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10 sm:mt-16">
+                <a href="#heroes" class="comic-button bg-gray-700 text-white px-6 py-3 sm:px-8 sm:py-3 rounded-md text-base sm:text-lg font-bold comic-font comic-border hover:bg-gray-600 w-full max-w-xs sm:max-w-none sm:w-auto">
+                    VIEW ALL 25+ HEROES <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-10 sm:py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-4 comic-font text-blue-400">
+                    GAME FEATURES
+                </h2>
+                <p class="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto">
+                    Experience the ultimate superhero battle game with these exciting features
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-900 rounded-lg p-6 sm:p-8 comic-border hover:bg-gray-800 transition-all duration-300 mb-6 md:mb-0 text-center">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-blue-600 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto">
+                        <i class="fas fa-users text-xl sm:text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 comic-font">TEAM BATTLES</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Assemble your dream team of 5 heroes and battle against evil forces. Combine different abilities for devastating combos!
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-gray-900 rounded-lg p-6 sm:p-8 comic-border hover:bg-gray-800 transition-all duration-300 mb-6 md:mb-0 text-center">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-red-600 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto">
+                        <i class="fas fa-fire-alt text-xl sm:text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 comic-font">STUNNING GRAPHICS</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Experience breathtaking visuals with high-quality character models, explosive effects, and dynamic environments.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-gray-900 rounded-lg p-6 sm:p-8 comic-border hover:bg-gray-800 transition-all duration-300 mb-6 md:mb-0 text-center">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-purple-600 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto">
+                        <i class="fas fa-chess-queen text-xl sm:text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 comic-font">STRATEGIC GAMEPLAY</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Master deep tactical combat with hero synergies, ability timing, and enemy weaknesses. No two battles are the same!
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-gray-900 rounded-lg p-6 sm:p-8 comic-border hover:bg-gray-800 transition-all duration-300 mb-6 lg:mb-0 text-center">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-yellow-600 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto">
+                        <i class="fas fa-trophy text-xl sm:text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 comic-font">COMPETITIVE MODES</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Test your skills in ranked PvP battles, guild wars, and special events with exclusive rewards.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-gray-900 rounded-lg p-6 sm:p-8 comic-border hover:bg-gray-800 transition-all duration-300 mb-6 lg:mb-0 text-center">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-green-600 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto">
+                        <i class="fas fa-sync-alt text-xl sm:text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 comic-font">REGULAR UPDATES</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        New heroes, events, and content added monthly to keep the game fresh and exciting.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-gray-900 rounded-lg p-6 sm:p-8 comic-border hover:bg-gray-800 transition-all duration-300 text-center">
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 bg-pink-600 rounded-full flex items-center justify-center mb-4 sm:mb-6 mx-auto">
+                        <i class="fas fa-city text-xl sm:text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 comic-font">SNOR CITY</h3>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Explore the vast open world of Snor City, complete missions, and uncover its dark secrets.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gameplay Video -->
+    <section id="gameplay" class="py-10 sm:py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-4 comic-font text-red-500">
+                    GAMEPLAY TRAILER
+                </h2>
+                <p class="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto">
+                    Watch SJ Hero in action and see why millions of players love it!
+                </p>
+            </div>
+
+            <div class="video-container comic-border rounded-lg overflow-hidden">
+                <iframe src="https://www.youtube.com/embed/2WI5TIQMta4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div class="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg comic-border mb-6 md:mb-0 text-center sm:text-left">
+                    <div class="flex items-center mb-3 sm:mb-4 justify-center sm:justify-start">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-red-600 rounded-full flex items-center justify-center mr-3 sm:mr-4">
+                            <i class="fas fa-gamepad text-lg sm:text-xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-white comic-font">INTUITIVE CONTROLS</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Easy to learn but hard to master controls designed specifically for mobile gaming.
+                    </p>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-lg comic-border mb-6 md:mb-0 text-center sm:text-left">
+                    <div class="flex items-center mb-3 sm:mb-4 justify-center sm:justify-start">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-full flex items-center justify-center mr-3 sm:mr-4">
+                            <i class="fas fa-bolt text-lg sm:text-xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-white comic-font">FAST-PACED ACTION</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Battles are quick and intense, perfect for gaming on the go.
+                    </p>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-lg comic-border text-center sm:text-left">
+                    <div class="flex items-center mb-3 sm:mb-4 justify-center sm:justify-start">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-purple-600 rounded-full flex items-center justify-center mr-3 sm:mr-4">
+                            <i class="fas fa-mobile-alt text-lg sm:text-xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg sm:text-xl font-bold text-white comic-font">OPTIMIZED FOR MOBILE</h3>
+                    </div>
+                    <p class="text-gray-300 text-sm sm:text-base">
+                        Beautiful graphics optimized to run smoothly on all devices.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-10 sm:py-16 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-4 comic-font text-yellow-400">
+                    PLAYER REVIEWS
+                </h2>
+                <p class="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto">
+                    See what our players are saying about SJ Hero
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gray-900 p-6 sm:p-8 rounded-lg comic-border mb-6 md:mb-0 text-center sm:text-left">
+                    <div class="flex items-center mb-4 sm:mb-6 justify-center sm:justify-start">
+                        <img class="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4" src="https://via.placeholder.com/48?text=P1" alt="Player 1">
+                        <div>
+                            <h4 class="text-base sm:text-lg font-bold text-white">Alex K.</h4>
+                            <div class="flex items-center text-yellow-400 text-sm justify-center sm:justify-start">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic text-sm sm:text-base mb-3 sm:mb-4">
+                        "The best superhero game on mobile! The graphics are insane and the combat is so satisfying. I love collecting all the different heroes."
+                    </p>
+                    <div class="flex flex-wrap justify-center sm:justify-start">
+                        <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded mr-2 mb-1">#Addictive</span>
+                        <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded mr-2 mb-1">#GreatGraphics</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                 <div class="testimonial-card bg-gray-900 p-6 sm:p-8 rounded-lg comic-border mb-6 md:mb-0 text-center sm:text-left">
+                    <div class="flex items-center mb-4 sm:mb-6 justify-center sm:justify-start">
+                        <img class="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4" src="https://via.placeholder.com/48?text=P2" alt="Player 2">
+                        <div>
+                            <h4 class="text-base sm:text-lg font-bold text-white">Maria S.</h4>
+                            <div class="flex items-center text-yellow-400 text-sm justify-center sm:justify-start">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic text-sm sm:text-base mb-3 sm:mb-4">
+                        "Finally a mobile game with actual strategy! The team combinations are endless and the PvP is super competitive. Can't stop playing!"
+                    </p>
+                    <div class="flex flex-wrap justify-center sm:justify-start">
+                        <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded mr-2 mb-1">#Strategic</span>
+                        <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded mr-2 mb-1">#Competitive</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                 <div class="testimonial-card bg-gray-900 p-6 sm:p-8 rounded-lg comic-border text-center sm:text-left">
+                    <div class="flex items-center mb-4 sm:mb-6 justify-center sm:justify-start">
+                        <img class="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4" src="https://via.placeholder.com/48?text=P3" alt="Player 3">
+                        <div>
+                            <h4 class="text-base sm:text-lg font-bold text-white">James T.</h4>
+                            <div class="flex items-center text-yellow-400 text-sm justify-center sm:justify-start">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic text-sm sm:text-base mb-3 sm:mb-4">
+                        "The developers actually listen to the community! Constant updates with new content and balance changes. This is how mobile games should be."
+                    </p>
+                    <div class="flex flex-wrap justify-center sm:justify-start">
+                        <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded mr-2 mb-1">#FrequentUpdates</span>
+                        <span class="bg-gray-800 text-gray-300 text-xs px-2 py-1 rounded mr-2 mb-1">#DevsListen</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 sm:mt-12 text-center">
+                <a href="https://play.google.com/store/apps/details?id=com.gamehero.sj" class="inline-flex items-center text-blue-400 hover:text-blue-300 text-sm sm:text-base">
+                    <span class="mr-2">See more reviews on Google Play</span>
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section id="download" class="py-10 sm:py-20 bg-gradient-to-r from-red-900 to-blue-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 comic-font leading-tight">
+                    JOIN THE BATTLE TODAY!
+                </h2>
+                <p class="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-10">
+                    Download SJ Hero now for free and start your superhero journey!
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="https://play.google.com/store/apps/details?id=com.gamehero.sj" class="comic-button bg-white text-gray-900 px-6 py-3 sm:px-8 sm:py-4 rounded-md text-base sm:text-lg font-bold comic-font comic-border hover:bg-gray-200 flex items-center justify-center w-full max-w-xs sm:max-w-none sm:w-auto">
+                        <img src="https://play-lh.googleusercontent.com/nAcmbkrNe8oH0V2qquqjpJDRZ4XCashEmX1-ecFDt-CHFR7bIvv43jyeezsYce8B44s" alt="Google Play" class="w-7 h-7 sm:w-8 sm:h-8 mr-2 sm:mr-3">
+                        <div class="text-left">
+                            <div class="text-xs">GET IT ON</div>
+                            <div class="text-base sm:text-xl">Google Play</div>
+                        </div>
+                    </a>
+
+                    <div class="text-white text-lg font-bold comic-font hidden sm:block">
+                        OR
+                    </div>
+
+                    <div class="bg-black bg-opacity-50 p-4 rounded-lg comic-border w-full max-w-xs sm:max-w-none sm:w-auto">
+                        <div class="flex items-center justify-center">
+                            <div class="mr-3 sm:mr-4 hidden sm:block">
+                                <div class="text-white text-sm">Scan to download</div>
+                                <div class="text-white text-xs">on your mobile</div>
+                            </div>
+                            <!-- TODO: Replace with actual QR code -->
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://play.google.com/store/apps/details?id=com.gamehero.sj" alt="QR Code" class="w-16 h-16 sm:w-20 sm:h-20">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 sm:mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto text-center">
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-bold text-white comic-font">25+</div>
+                        <div class="text-gray-300 text-sm sm:text-base">Unique Heroes</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-bold text-white comic-font">100+</div>
+                        <div class="text-gray-300 text-sm sm:text-base">Missions</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-bold text-white comic-font">1M+</div>
+                        <div class="text-gray-300 text-sm sm:text-base">Players</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-bold text-white comic-font">4.7★</div>
+                        <div class="text-gray-300 text-sm sm:text-base">Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-10 sm:py-16 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-4 comic-font text-green-400">
+                    FREQUENTLY ASKED QUESTIONS
+                </h2>
+                <p class="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto">
+                    Got questions? We've got answers!
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item bg-gray-800 rounded-lg comic-border overflow-hidden">
+                    <button class="flex items-center justify-between w-full p-4 sm:p-6 text-left focus:outline-none">
+                        <span class="text-lg sm:text-xl font-bold text-white comic-font">Is SJ Hero free to play?</span>
+                        <i class="fas fa-chevron-down text-white transform transition-transform duration-300 text-sm sm:text-base"></i>
+                    </button>
+                    <div class="px-4 sm:px-6 pb-4 sm:pb-6 hidden">
+                        <p class="text-gray-300 text-sm sm:text-base">
+                            Yes! SJ Hero is completely free to download and play. The game offers optional in-app purchases for cosmetic items and to speed up progression, but all gameplay content can be accessed without spending money.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                 <div class="faq-item bg-gray-800 rounded-lg comic-border overflow-hidden">
+                    <button class="flex items-center justify-between w-full p-4 sm:p-6 text-left focus:outline-none">
+                        <span class="text-lg sm:text-xl font-bold text-white comic-font">What devices can play SJ Hero?</span>
+                        <i class="fas fa-chevron-down text-white transform transition-transform duration-300 text-sm sm:text-base"></i>
+                    </button>
+                    <div class="px-4 sm:px-6 pb-4 sm:pb-6 hidden">
+                        <p class="text-gray-300 text-sm sm:text-base">
+                            SJ Hero is available on Android devices running Android 7.0 or later with at least 2GB of RAM. The game is optimized to run on a wide range of devices, from budget phones to flagship models.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                 <div class="faq-item bg-gray-800 rounded-lg comic-border overflow-hidden">
+                    <button class="flex items-center justify-between w-full p-4 sm:p-6 text-left focus:outline-none">
+                        <span class="text-lg sm:text-xl font-bold text-white comic-font">How often does the game get updated?</span>
+                        <i class="fas fa-chevron-down text-white transform transition-transform duration-300 text-sm sm:text-base"></i>
+                    </button>
+                    <div class="px-4 sm:px-6 pb-4 sm:pb-6 hidden">
+                        <p class="text-gray-300 text-sm sm:text-base">
+                            We release major updates with new heroes, events, and features every month, along with smaller balance patches and bug fixes as needed. We're constantly working to improve the game based on player feedback.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                 <div class="faq-item bg-gray-800 rounded-lg comic-border overflow-hidden">
+                    <button class="flex items-center justify-between w-full p-4 sm:p-6 text-left focus:outline-none">
+                        <span class="text-lg sm:text-xl font-bold text-white comic-font">Is an internet connection required?</span>
+                        <i class="fas fa-chevron-down text-white transform transition-transform duration-300 text-sm sm:text-base"></i>
+                    </button>
+                    <div class="px-4 sm:px-6 pb-4 sm:pb-6 hidden">
+                        <p class="text-gray-300 text-sm sm:text-base">
+                            Yes, SJ Hero requires an active internet connection to play. This allows us to provide live events, PvP battles, and regular content updates. However, some tutorial content may be available offline.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                 <div class="faq-item bg-gray-800 rounded-lg comic-border overflow-hidden">
+                    <button class="flex items-center justify-between w-full p-4 sm:p-6 text-left focus:outline-none">
+                        <span class="text-lg sm:text-xl font-bold text-white comic-font">How do I get new heroes?</span>
+                        <i class="fas fa-chevron-down text-white transform transition-transform duration-300 text-sm sm:text-base"></i>
+                    </button>
+                    <div class="px-4 sm:px-6 pb-4 sm:pb-6 hidden">
+                        <p class="text-gray-300 text-sm sm:text-base">
+                            Heroes can be obtained through gameplay by completing missions, participating in events, or earning in-game currency. All heroes can be unlocked without spending real money, though some may require more time investment than others.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 sm:mt-12 text-center">
+                <p class="text-gray-300 text-sm sm:text-base mb-4 sm:mb-6">
+                    Still have questions? Contact our support team!
+                </p>
+                <a href="mailto:support@sjhero.game" class="comic-button bg-green-600 text-white px-6 py-3 sm:px-8 sm:py-3 rounded-md text-base sm:text-lg font-bold comic-font comic-border hover:bg-green-700 w-full max-w-xs sm:max-w-none sm:w-auto">
+                    <i class="fas fa-envelope mr-2"></i> CONTACT SUPPORT
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 sm:py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <img src="https://play-lh.googleusercontent.com/nAcmbkrNe8oH0V2qquqjpJDRZ4XCashEmX1-ecFDt-CHFR7bIvv43jyeezsYce8B44s" alt="SJ Hero Logo" class="h-8 sm:h-10 mb-3 sm:mb-4 mx-auto md:mx-0">
+                    <p class="text-gray-400 text-xs sm:text-sm mb-4">
+                        The ultimate superhero team battle game. Assemble your heroes and save Snor City today!
+                    </p>
+                    <div class="flex space-x-4 text-sm sm:text-base justify-center md:justify-start">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <h3 class="text-white text-base sm:text-lg font-bold comic-font mb-3 sm:mb-4">GAME</h3>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li><a href="#heroes" class="text-gray-400 hover:text-white">Heroes</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white">Missions</a></li>
+                        <li><a href="#gameplay" class="text-gray-400 hover:text-white">Events</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white">PvP</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white">Guilds</a></li>
+                    </ul>
+                </div>
+
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <h3 class="text-white text-base sm:text-lg font-bold comic-font mb-3 sm:mb-4">SUPPORT</h3>
+                    <ul class="space-y-2 text-xs sm:text-sm">
+                        <li><a href="#faq" class="text-gray-400 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Community</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="mailto:support@sjhero.game" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="text-center md:text-left">
+                    <h3 class="text-white text-base sm:text-lg font-bold comic-font mb-3 sm:mb-4">NEWSLETTER</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">
+                        Subscribe to get news and updates about SJ Hero!
+                    </p>
+                    <div class="flex max-w-xs mx-auto md:max-w-none md:mx-0">
+                        <input type="email" placeholder="Your email" class="bg-gray-900 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-red-500 w-full text-sm">
+                        <button class="bg-red-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-r-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 text-sm sm:text-base">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="mt-4">
+                        <a href="https://play.google.com/store/apps/details?id=com.gamehero.sj" class="comic-button bg-gray-800 text-white px-4 py-2 rounded-md text-sm font-bold comic-font comic-border hover:bg-gray-700 inline-flex items-center justify-center w-full max-w-xs sm:max-w-none sm:w-auto">
+                            <i class="fab fa-google-play mr-2"></i> GET THE APP
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <p class="text-gray-400 text-xs sm:text-sm mb-4 md:mb-0">
+                    © 2023 SJ Hero. All rights reserved.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-xs sm:text-sm">
+                    <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('nav button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-item button').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.closest('.faq-item');
+                const content = faqItem.querySelector('div:last-child');
+                const icon = button.querySelector('i');
+
+                // Check if this item is already open
+                const isCurrentlyOpen = !content.classList.contains('hidden');
+
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    const otherButton = item.querySelector('button');
+                    const otherContent = item.querySelector('div:last-child');
+                    const otherIcon = otherButton.querySelector('i');
+
+                    if (item !== faqItem) { // Don't close the one being clicked
+                        otherContent.classList.add('hidden');
+                        otherIcon.classList.remove('rotate-180');
+                        otherButton.classList.remove('active');
+                    }
+                });
+
+                // Toggle the clicked item's content and active state
+                if (!isCurrentlyOpen) {
+                    content.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                    button.classList.add('active');
+                } else {
+                    content.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                    button.classList.remove('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Calculate offset for fixed header
+                    const headerHeight = document.querySelector('nav').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.scrollY - headerHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                         // Reset menu button icon state
+                         const menuButton = document.querySelector('nav button[aria-controls="mobile-menu"] i');
+                         if (menuButton) {
+                             menuButton.classList.remove('fa-times');
+                             menuButton.classList.add('fa-bars');
+                         }
+                    }
+                }
+            });
+        });
+
+        // Add shadow to navbar on scroll & Change menu icon
+        const nav = document.querySelector('nav');
+        const menuButtonIcon = document.querySelector('nav button[aria-controls="mobile-menu"] i');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                 nav.classList.add('shadow-lg');
+                 nav.classList.add('bg-opacity-95');
+            } else {
+                 nav.classList.remove('shadow-lg');
+                 nav.classList.remove('bg-opacity-95');
+            }
+        });
+
+         // Change menu icon when mobile menu is toggled
+         document.querySelector('nav button').addEventListener('click', function() {
+             if (mobileMenu.classList.contains('hidden')) {
+                 menuButtonIcon.classList.remove('fa-times');
+                 menuButtonIcon.classList.add('fa-bars');
+             } else {
+                 menuButtonIcon.classList.remove('fa-bars');
+                 menuButtonIcon.classList.add('fa-times');
+             }
+         });
+
+
+        // Mobile-specific touch events (Passive listeners for performance)
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.comic-button, .faq-item button').forEach(el => {
+                el.addEventListener('touchstart', function() {
+                    this.classList.add('active');
+                }, { passive: true });
+
+                el.addEventListener('touchend', function() {
+                     const btn = this;
+                     // Remove active class briefly after touch end for feedback
+                     setTimeout(() => {
+                         btn.classList.remove('active');
+                     }, 150);
+                }, { passive: true });
+
+                el.addEventListener('touchcancel', function() {
+                     this.classList.remove('active');
+                }, { passive: true });
+            });
+
+             // Prevent pinch-to-zoom
+            document.addEventListener('touchmove', function(e) {
+                 if (e.touches.length > 1) {
+                     e.preventDefault();
+                 }
+            }, { passive: false });
+        }
+    </script>
 </body>
 </html>
